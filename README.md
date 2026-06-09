@@ -27,7 +27,6 @@ To install dependencies, run:
 
 ```bash
 pip install pandas openpyxl
----
 ```
 
 
