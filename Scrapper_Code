@@ -1,0 +1,121 @@
+import pandas as pd
+import json
+
+def load_and_parse_routine(file_path):
+    """
+    Reads the Excel workbook and parses ALL classes into a structured list.
+    """
+    all_sheets_dict = pd.read_excel(file_path, sheet_name=None, header=None)
+    all_classes = []
+    
+    days_of_week = ["Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
+    time_indices = [1, 3, 5, 7, 9, 11]
+
+    for sheet_name, df in all_sheets_dict.items():
+        time_map = {}
+        for idx in time_indices:
+            if idx < df.shape[1]:
+                raw_time = str(df.iloc[3, idx])
+                time_map[idx] = raw_time.replace("-", " - ").replace("  ", " ").strip()
+
+        current_day = None
+
+        for i in range(5, len(df)):
+            first_col = str(df.iloc[i, 0]).strip()
+            
+            if first_col in days_of_week:
+                current_day = first_col
+                continue
+            
+            if current_day and pd.notna(df.iloc[i, 0]) and first_col.lower() != "nan" and first_col != "Class":
+                room = first_col
+                for idx in time_indices:
+                    if idx >= df.shape[1]: continue
+                    
+                    course_cell = df.iloc[i, idx]
+                    teacher_cell = df.iloc[i, idx+1] if (idx+1) < df.shape[1] else ""
+                    
+                    if pd.notna(course_cell):
+                        course_str = str(course_cell).strip()
+                        if course_str.upper() == "NAN" or course_str == "":
+                            continue
+                        
+                        teacher = str(teacher_cell).strip() if pd.notna(teacher_cell) and str(teacher_cell).lower() != "nan" else ""
+                        
+                        parts = course_str.split('-')
+                        course_code = parts[0]
+                        batch = parts[1] if len(parts) > 1 else ""
+                        section = parts[2] if len(parts) > 2 else ""
+                        
+                        all_classes.append({
+                            "routineType": sheet_name, # This holds "Main version" or "Ramadan Routine"
+                            "day": current_day,
+                            "time": time_map.get(idx, ""),
+                            "room": room,
+                            "courseCode": course_code,
+                            "teacherInitial": teacher,
+                            "batch": batch,
+                            "section": section
+                        })
+    return all_classes
+
+
+def find_specific_routine(schedule, target_routine, target_batch, target_section=None):
+    """
+    Filters the schedule list by Routine Type, Batch, and optional Section.
+    """
+    filtered_schedule = []
+    
+    # Standardize inputs to prevent case-sensitivity issues
+    target_routine = str(target_routine).strip().lower()
+    target_batch = str(target_batch).strip()
+    if target_section:
+        target_section = str(target_section).strip().lower()
+
+    for item in schedule:
+        # 1. Check if Routine Type matches (e.g., "main version")
+        if target_routine in item["routineType"].lower():
+            # 2. Check if Batch matches (e.g., "43")
+            if item["batch"] == target_batch:
+                # 3. Check if Section matches if one was provided (e.g., "e")
+                if target_section is None or item["section"].lower() == target_section:
+                    filtered_schedule.append(item)
+                
+    return filtered_schedule
+
+
+# ==========================================
+#               HOW TO RUN IT
+# ==========================================
+file_name = "SWE_ROUTINE_Spring 2026.xlsx"
+
+print("Loading data...")
+full_schedule = load_and_parse_routine(file_name)
+
+# --- CONFIGURABLE FILTERS ---
+# Change "Main version" to "Ramadan Routine" depending on what you need
+search_routine = "Main version" 
+search_batch = "43"
+search_section = "E" 
+
+print(f"\nSearching: [{search_routine}] -> Batch {search_batch}, Section {search_section}...")
+my_routine = find_specific_routine(
+    full_schedule, 
+    target_routine=search_routine, 
+    target_batch=search_batch, 
+    target_section=search_section
+)
+
+# Print out results to the screen
+print(f"\n--- {search_routine.upper()} CLASSES FOUND ({len(my_routine)}) ---")
+for index, course in enumerate(my_routine, 1):
+    print(f"{index}. {course['day']} | {course['time']} | Room: {course['room']} | {course['courseCode']} ({course['teacherInitial']})")
+
+# Save the filtered output to its own small JSON file
+clean_filename = search_routine.replace(" ", "_").lower()
+output_file = f"{clean_filename}_batch_{search_batch}_{search_section}.json"
+
+with open(output_file, 'w') as f:
+    json.dump(my_routine, f, indent=2)
+
+print(f"\nSaved to file: '{output_file}'")
