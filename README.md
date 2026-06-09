@@ -45,7 +45,7 @@ search_section = "D"            # Change to your specific section letter
 Open your terminal window and type the execution command below to generate your personal JSON data file:
 
 ```bash
-python find_routine.py
+python Scrapper_Code.py
 ```
 
 ### 🚀 How It Works
