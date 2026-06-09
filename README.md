@@ -1,6 +1,6 @@
 # DIU Routine Scrapper
 
-## 🗓️ Smart Excel-to-JSON Routine Parser
+## 🗓️ Smart Excel-to-JSON Routine Generator!! 
 
 A robust, flexible Python utility designed to parse complex, multi-sheet university class routines from Excel workbooks (`.xlsx`) and format them into clean, highly-structured JSON data.
 
