@@ -48,8 +48,8 @@ pip install pandas openpyxl
 
 Open `Scrapper_Code.py` and update the filter values:
 
-```python id="7qj8g5"
-# --- CONFIGURABLE FILTERS ---
+```python
+
 
 search_routine = "Main version"   # Example: "Ramadan Routine"
 search_batch = "44"
@@ -62,7 +62,7 @@ search_section = "D"
 
 Open your terminal and run:
 
-```bash id="gwavem"
+```bash
 python Scrapper_Code.py
 ```
 
