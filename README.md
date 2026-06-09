@@ -25,7 +25,7 @@ It includes advanced lookup filtering capabilities, allowing users to isolate sc
 
 To install dependencies, run:
 ``bash
-pip install pandas openpyxl
+pip install pandas openpyxl 
 
 ---
 
