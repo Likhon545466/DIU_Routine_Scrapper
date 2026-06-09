@@ -33,8 +33,7 @@ pip install pandas openpyxl
 
 ## 🚀 How It Works
 
-- **Step 1:** Place your routine spreadsheet named `SWE_ROUTINE_Spring 2026.xlsx` in the project root directory.
-- **Step 2:** Open the script and adjust the lookup variables inside the configuration section.
-- **Step 3:** Run the parser script in your terminal:
-```bash
+search_routine = "Main version" # Or "Ramadan Routine"
+search_batch = "44"
+search_section = "D"
 python find_routine.py
