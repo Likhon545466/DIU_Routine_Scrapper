@@ -27,6 +27,23 @@ To install dependencies, run:
 ```bash
 pip install pandas openpyxl
 
+---
+
+## ⚙️ Configuration & Code Changes
+
+### 🔧 Step 1: Update the Script Variables
+Open your `find_routine.py` file, scroll down to the bottom execution block, and change the values inside these quotes to match your class details:
+
+- **Target Routine:** `search_routine = "Main version"` — *Change this to `"Ramadan Routine"` if needed.*
+- **Target Batch:** `search_batch = "44"` — *Change this to your numeric batch identifier.*
+- **Target Section:** `search_section = "D"` — *Change this to your specific section letter.*
+
+### 🚀 Step 2: Run the Parser Command
+Open your terminal window and type the execution command below to generate your personal JSON data file:
+
+```bash
+python find_routine.py
+
 ### 🚀 How It Works
 search_routine = "Main version" # Or "Ramadan Routine"
 search_batch = "44"
