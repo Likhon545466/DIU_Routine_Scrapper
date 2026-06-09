@@ -24,7 +24,7 @@ It includes advanced lookup filtering capabilities, allowing users to isolate sc
   - `json` (Built-in standard JSON serialization)
 
 To install dependencies, run:
-```bash
+``bash
 pip install pandas openpyxl
 
 ---
