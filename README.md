@@ -46,6 +46,7 @@ Open your terminal window and type the execution command below to generate your 
 
 ```bash
 python find_routine.py
+```
 
 ### 🚀 How It Works
 search_routine = "Main version" # Or "Ramadan Routine"
