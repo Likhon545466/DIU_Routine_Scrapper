@@ -12,11 +12,12 @@ It includes advanced lookup filtering capabilities, allowing users to isolate sc
 
 * Multi-Sheet Support. Reads and processes multiple routine grids from a single workbook file.
 * Automated Metadata Extraction. Parses and structures tags like Semester, Department, and Effective From directly from spreadsheet headers.
-* Smart Data Structuring. Cleans string data, standardizes messy Excel time dashes, and breaks complex cell values like `SE216-43-E` into structured keys:
+* Smart Data Structuring. Cleans string data, standardizes messy Excel time dashes, and breaks complex cell values like `SE216-44-D` into structured keys:
 
   * `courseCode`
   * `batch`
   * `section`
+  * `Teacher's Initial`
 * Granular Filtering. Includes a built-in search utility to isolate specific routines instantly.
 
 ---
@@ -35,7 +36,7 @@ Libraries:
 
 Install dependencies:
 
-```bash id="nqlx9q"
+```bash
 pip install pandas openpyxl
 ```
 
