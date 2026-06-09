@@ -95,8 +95,8 @@ full_schedule = load_and_parse_routine(file_name)
 # --- CONFIGURABLE FILTERS ---
 # Change "Main version" to "Ramadan Routine" depending on what you need
 search_routine = "Main version" 
-search_batch = "43"
-search_section = "E" 
+search_batch = "44"
+search_section = "D" 
 
 print(f"\nSearching: [{search_routine}] -> Batch {search_batch}, Section {search_section}...")
 my_routine = find_specific_routine(
