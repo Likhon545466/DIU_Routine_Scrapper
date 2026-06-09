@@ -28,14 +28,13 @@ To install dependencies, run:
 pip install pandas openpyxl
 
 ---
+---
 
-## 🚀 How It Works & Configuration
+**## 🚀 How It Works & Configuration**
 
-- **Step 1: Routine Spreadsheet** — Place your routine file named `SWE_ROUTINE_Spring 2026.xlsx` inside the root directory of your project.
-- **Step 2: Set Search Filters** — Open your `find_routine.py` script and modify the configuration variables at the bottom to target your specific routine preference:
-  - `search_routine` : Select either `"Main version"` or `"Ramadan Routine"`.
-  - `search_batch` : Pass your target batch number as a string (e.g., `"44"`).
-  - `search_section` : Pass your section letter as a string (e.g., `"D"`).
+search_routine = "Main version" # Or "Ramadan Routine"
+search_batch = "44"
+search_section = "D"
 - **Step 3: Execute the Script** — Fire up your terminal environment and run the following command to generate your filtered lookup data:
 ```bash
 python find_routine.py
