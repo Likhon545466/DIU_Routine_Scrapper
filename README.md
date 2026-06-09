@@ -27,12 +27,7 @@ To install dependencies, run:
 ```bash
 pip install pandas openpyxl
 
----
-
----
-
-## 🚀 How It Works
-
+### 🚀 How It Works
 search_routine = "Main version" # Or "Ramadan Routine"
 search_batch = "44"
 search_section = "D"
