@@ -25,18 +25,22 @@ It includes advanced lookup filtering capabilities, allowing users to isolate sc
 
 To install dependencies, run:
 ``bash
-pip install pandas openpyxl 
-
+pip install pandas openpyxl
+\`\`\`bash
 ---
+
+
 
 ## ⚙️ Configuration & Code Changes
 
-### 🔧 Step 1: Update the Script Variables
-Open your `find_routine.py` file, scroll down to the bottom execution block, and change the values inside these quotes to match your class details:
+### 🔧 Step 1: Modify Script Variables
+Open your `find_routine.py` file, scroll down to the bottom, and update the values inside the quotes with your search parameters:
 
-- **Target Routine:** `search_routine = "Main version"` — *Change this to `"Ramadan Routine"` if needed.*
-- **Target Batch:** `search_batch = "44"` — *Change this to your numeric batch identifier.*
-- **Target Section:** `search_section = "D"` — *Change this to your specific section letter.*
+```python
+# --- CONFIGURABLE FILTERS ---
+search_routine = "Main version" # Change to "Ramadan Routine" if needed
+search_batch = "44"             # Change to your numeric batch number
+search_section = "D"            # Change to your specific section letter
 
 ### 🚀 Step 2: Run the Parser Command
 Open your terminal window and type the execution command below to generate your personal JSON data file:
