@@ -33,7 +33,7 @@ pip install pandas openpyxl
 ## ⚙️ Configuration & Code Changes
 
 ### 🔧 Step 1: Modify Script Variables
-Open your `find_routine.py` file, scroll down to the bottom, and update the values inside the quotes with your search parameters:
+Open your `Scrapper_Code` file, scroll down to the bottom, and update the values inside the quotes with your search parameters:
 
 ```python
 # --- CONFIGURABLE FILTERS ---
