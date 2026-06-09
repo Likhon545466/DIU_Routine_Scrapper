@@ -1,55 +1,92 @@
-# DIU_Routine_Scrapper
-# 🗓️ Smart Excel-to-JSON Routine Parser
+# DIU Routine Scrapper
 
-A robust, flexible Python utility designed to parse complex, multi-sheet university class routines from Excel workbooks (`.xlsx`) and format them into clean, highly-structured JSON data. 
+## 🗓️ Smart Excel-to-JSON Routine Parser
 
-It includes advanced lookup filtering capabilities, allowing users to isolate schedules by **Routine/Sheet Type** (e.g., Main Version vs. Ramadan Routine), **Batch**, and **Section**.
+A robust, flexible Python utility designed to parse complex, multi-sheet university class routines from Excel workbooks (`.xlsx`) and format them into clean, highly-structured JSON data.
+
+It includes advanced lookup filtering capabilities, allowing users to isolate schedules by Routine/Sheet Type, Batch, and Section.
 
 ---
 
 ## ✨ Features
 
-- **Multi-Sheet Support:** Seamlessly reads and processes multiple routine grids from a single workbook file.
-- **Automated Metadata Extraction:** Automatically parses and structures tags like `Semester`, `Department`, and `Effective From` directly from the spreadsheet headers.
-- **Smart Data Structuring:** Cleans string data, standardizes messy Excel time dashes, and breaks complex cell values (like `SE216-43-E`) into structured keys: `courseCode`, `batch`, and `section`.
-- **Granular Filtering:** Includes a built-in search utility to immediately isolate specific routines—perfect for student apps or quick lookup schedules.
+* Multi-Sheet Support. Reads and processes multiple routine grids from a single workbook file.
+* Automated Metadata Extraction. Parses and structures tags like Semester, Department, and Effective From directly from spreadsheet headers.
+* Smart Data Structuring. Cleans string data, standardizes messy Excel time dashes, and breaks complex cell values like `SE216-43-E` into structured keys:
+
+  * `courseCode`
+  * `batch`
+  * `section`
+* Granular Filtering. Includes a built-in search utility to isolate specific routines instantly.
 
 ---
 
 ## 📦 Tech Stack & Dependencies
 
-- **Language:** Python 3.x
-- **Libraries:** - `pandas` (Data processing & structure manipulation)
-  - `openpyxl` (Modern Excel layout reader engine)
-  - `json` (Built-in standard JSON serialization)
+Language:
 
-To install dependencies, run:
+* Python 3.x
 
-```bash
+Libraries:
+
+* `pandas`
+* `openpyxl`
+* `json`
+
+Install dependencies:
+
+```bash id="nqlx9q"
 pip install pandas openpyxl
 ```
 
+---
 
 ## ⚙️ Configuration & Code Changes
 
 ### 🔧 Step 1: Modify Script Variables
-Open your `Scrapper_Code` file, scroll down to the bottom, and update the values inside the quotes with your search parameters:
 
-```python
+Open `Scrapper_Code.py` and update the filter values:
+
+```python id="7qj8g5"
 # --- CONFIGURABLE FILTERS ---
-search_routine = "Main version" # Change to "Ramadan Routine" if needed
-search_batch = "44"             # Change to your numeric batch number
-search_section = "D"            # Change to your specific section letter
 
-### 🚀 Step 2: Run the Parser Command
-Open your terminal window and type the execution command below to generate your personal JSON data file:
+search_routine = "Main version"   # Example: "Ramadan Routine"
+search_batch = "44"
+search_section = "D"
+```
 
-```bash
+---
+
+## 🚀 Step 2: Run the Parser Command
+
+Open your terminal and run:
+
+```bash id="gwavem"
 python Scrapper_Code.py
 ```
 
-### 🚀 How It Works
-search_routine = "Main version" # Or "Ramadan Routine"
+---
+
+## 🚀 How It Works
+
+Example configuration:
+
+```python id="h6v73n"
+search_routine = "Main version"
 search_batch = "44"
 search_section = "D"
-python find_routine.py
+```
+
+Run the script:
+
+```bash id="ec6rrx"
+python Scrapper_Code.py
+```
+
+The parser will:
+
+* Read the Excel workbook
+* Process all routine sheets
+* Extract metadata
+* Filter routines based on your configuration
+* Generate clean JSON output
